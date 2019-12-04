@@ -4,6 +4,7 @@ using System.Text;
 using System.Net.Sockets;
 using System.Net;
 using System.Threading;
+using System.IO;
 
 namespace DistantChat
 {
@@ -12,7 +13,43 @@ namespace DistantChat
      */
     class Server
     {
-        
+        private static void ProcessClientRequest(object arg)
+        {
+            TcpClient tcpClient = (TcpClient)arg;
+
+            try
+            {
+                StreamReader reader = new StreamReader(tcpClient.GetStream());
+                StreamWriter writer = new StreamWriter(tcpClient.GetStream());
+
+                string s = String.Empty; 
+
+                while( ! (s=reader.ReadLine()).Equals("Exit")||s==null){
+
+                    Console.WriteLine(s +" from the client");
+                    writer.WriteLine(s + " from the server");
+                    writer.Flush(); 
+
+                }
+                reader.Close();
+                writer.Close();
+                tcpClient.Close();
+                Console.WriteLine("closing client"); 
+
+            } catch(Exception e)
+            {
+                Console.WriteLine(e);
+            }
+            finally
+            {
+                if(tcpClient != null)
+                {
+                    tcpClient.Close();
+
+                }
+            }
+
+        }
 
         public static void Main()
         {
