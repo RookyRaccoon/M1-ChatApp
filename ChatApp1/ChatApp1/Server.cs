@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Net.Sockets;
 using System.Net;
+using System.Threading;
 
 namespace DistantChat
 {
@@ -11,18 +12,40 @@ namespace DistantChat
      */
     class Server
     {
-        private int port; 
+        
 
-        public Server(int port)
+        public static void Main()
         {
-            this.port = port; 
+            IPAddress iPAddress = new IPAddress(new byte[] { 127, 0, 0, 1 });
+            TcpListener tcpListener = new TcpListener(iPAddress, 8080);
 
-        }
+            try
+            {
+                tcpListener.Start();
+                Console.WriteLine("Server started ..."); 
 
-        public void start()
-        {
-            TcpListener tcpListener = new TcpListener(new IPAddress(new byte[] { 127, 0, 0, 1 }), port);
-            tcpListener.Start(); 
+                while (true)
+                {
+                    Console.WriteLine("Waiting on client requests....");
+                    TcpClient tcpClient = tcpListener.AcceptTcpClient();
+                    Console.WriteLine("Accepted new client");
+                    Thread t = new Thread(ProcessClientRequest);
+                    t.Start(tcpClient); 
+                }
+
+
+            } catch (Exception e)
+            {
+                Console.WriteLine(e); 
+            } finally
+            {
+                if(tcpListener != null)
+                {
+                    tcpListener.Stop(); 
+                }
+            }
+
+
 
         }
     }
