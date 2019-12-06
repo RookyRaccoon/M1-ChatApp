@@ -13,77 +13,62 @@ namespace Server
      */
     class Server
     {
-        private static void ProcessClientRequest(object arg)
+        //server listens on port 8976 for any IP address
+        private TcpListener server = new TcpListener(IPAddress.Any, 8976); 
+        
+        private List<Client> connectedClients = new List<Client>(); //
+
+        public void startListen()
         {
-            TcpClient tcpClient = (TcpClient)arg;
+            
+                server.Start();
+                Console.WriteLine("Server started...");
+                //Starting a new thread to handle clients 
+                //lambda takes no param 
+                new Thread(() => {
+                    try
+                    {
+                        while (true)
+                        {
+                            Console.WriteLine("Waiting for clients");
+                            TcpClient client = server.AcceptTcpClient();
+                            Client c = new Client() { username = "", IPAdress = "", tcpClient = client };
+                            connectedClients.Add(c);
+                            Console.WriteLine("Accepted new client connection");
+                            //TO DO SET STREAM 
 
-            try
-            {
-                StreamReader reader = new StreamReader(tcpClient.GetStream());
-                StreamWriter writer = new StreamWriter(tcpClient.GetStream());
 
-                string s = String.Empty; 
+                        }
+                    }
+                    catch
+                    {
 
-                while( ! (s=reader.ReadLine()).Equals("Exit")||s==null){
+                    }
+                    finally
+                    {
 
-                    Console.WriteLine(s +" from the client");
-                    writer.WriteLine(s + " from the server");
-                    writer.Flush(); 
+                    }
 
-                }
-                reader.Close();
-                writer.Close();
-                tcpClient.Close();
-                Console.WriteLine("closing client"); 
+                }).Start();
 
-            } catch(Exception e)
-            {
-                Console.WriteLine(e);
+
+
+
             }
-            finally
-            {
-                if(tcpClient != null)
-                {
-                    tcpClient.Close();
+           
+         }
 
-                }
-            }
+
+    
+
+
+    public struct Client{
+        public String username { get; set; }
+        public String IPAdress { get; set; }
+
+        public TcpClient tcpClient { get; set; }
 
         }
 
-        public static void Main()
-        {
-            IPAddress iPAddress = new IPAddress(new byte[] { 127, 0, 0, 1 });
-            TcpListener tcpListener = new TcpListener(iPAddress, 8976);
-
-            try
-            {
-                tcpListener.Start();
-                Console.WriteLine("Server started ..."); 
-
-                while (true)
-                {
-                    Console.WriteLine("Waiting on client requests....");
-                    TcpClient tcpClient = tcpListener.AcceptTcpClient();
-                    Console.WriteLine("Accepted new client");
-                    Thread t = new Thread(ProcessClientRequest);
-                    t.Start(tcpClient); 
-                }
-
-
-            } catch (Exception e)
-            {
-                Console.WriteLine(e); 
-            } finally
-            {
-                if(tcpListener != null)
-                {
-                    tcpListener.Stop(); 
-                }
-            }
-
-
-
-        }
-    }
+    
 }
