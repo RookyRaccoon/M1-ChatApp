@@ -9,11 +9,11 @@ namespace DistantChat
     class Client
     {
 
-        public void Main()
+        public static void Main()
         {
             try
             {
-                TcpClient client = new TcpClient("127.0.0.1", 8080);
+                TcpClient client = new TcpClient("127.0.0.1", 8976);
 
                 StreamReader reader = new StreamReader(client.GetStream());
                 StreamWriter writer = new StreamWriter(client.GetStream());

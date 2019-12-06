@@ -54,7 +54,7 @@ namespace DistantChat
         public static void Main()
         {
             IPAddress iPAddress = new IPAddress(new byte[] { 127, 0, 0, 1 });
-            TcpListener tcpListener = new TcpListener(iPAddress, 8080);
+            TcpListener tcpListener = new TcpListener(iPAddress, 8976);
 
             try
             {
