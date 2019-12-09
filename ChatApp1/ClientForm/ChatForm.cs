@@ -17,6 +17,9 @@ namespace ClientForm
             InitializeComponent();
         }
 
+        private void RichTextBox1_TextChanged(object sender, EventArgs e)
+        {
 
+        }
     }
 }
