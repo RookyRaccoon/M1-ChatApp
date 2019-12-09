@@ -19,7 +19,7 @@ namespace Server
         private TcpListener server = new TcpListener(IPAddress.Any,8976);
         private bool server_status = false; 
         private List<Client> clientsConnected = new List<Client>();
-
+        
         private delegate void SetTextStatus(string data);
         private delegate void SetTextButton(string data);
 
