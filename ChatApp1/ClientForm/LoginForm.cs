@@ -13,7 +13,8 @@ namespace ClientForm
 {
     public partial class LoginForm : Form
     {
-        public EventHandler<Log_Event> Log_event;
+        
+        public event EventHandler<Log_Event> Log_update;
         public delegate void DelegateRaising_bool(bool log); 
         public LoginForm()
         {
@@ -21,7 +22,13 @@ namespace ClientForm
         }
 
 
-        //Connection method, raising the event creating a new eventargs and ensures you fill out the form correctly 
+        
+        /// <summary>
+        /// Connection button, raising the event creating a new log_event(username and log) 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+
         //To do DB with username and password
         private void ConnectButton_Click(object sender, EventArgs e)
         {
@@ -30,7 +37,19 @@ namespace ClientForm
                 if (textPassword.Text == "password")
                 {
                     //null
-                    Log_event(this, new Log_Event(true,textUsername.Text));
+                    EventHandler<Log_Event> handler = Log_update;
+
+                    if (handler != null)
+                    {
+
+                        handler(this, new Log_Event(true, textUsername.Text));
+
+                    }
+                    else
+                    {
+                        MessageBox.Show("event null");
+
+                    }
                 }
                 else
                 {

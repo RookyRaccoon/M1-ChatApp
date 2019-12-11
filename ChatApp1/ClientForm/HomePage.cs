@@ -22,6 +22,8 @@ namespace ClientForm
         public event EventHandler<Log_Event> Log_event;
         public delegate void DelegateBool(bool log);
 
+        public event EventHandler<New_Chat_Event> New_chat_event;
+        public delegate void DelegateString(string data); 
         public HomePage(string name)
         {
             InitializeComponent();

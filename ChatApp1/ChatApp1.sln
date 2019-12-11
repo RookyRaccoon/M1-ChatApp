@@ -7,7 +7,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClientForm", "ClientForm\Cl
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Server", "Server\Server.csproj", "{BBC348A9-8949-4588-9AF9-5E7A7D40A64B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Communication", "Communication\Communication.csproj", "{82A66966-1473-4166-ABD1-9620C142AB47}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Communication", "Communication\Communication.csproj", "{813EDA7A-C0B4-4B07-8A46-8959B56AE644}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -23,10 +23,10 @@ Global
 		{BBC348A9-8949-4588-9AF9-5E7A7D40A64B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BBC348A9-8949-4588-9AF9-5E7A7D40A64B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BBC348A9-8949-4588-9AF9-5E7A7D40A64B}.Release|Any CPU.Build.0 = Release|Any CPU
-		{82A66966-1473-4166-ABD1-9620C142AB47}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{82A66966-1473-4166-ABD1-9620C142AB47}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{82A66966-1473-4166-ABD1-9620C142AB47}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{82A66966-1473-4166-ABD1-9620C142AB47}.Release|Any CPU.Build.0 = Release|Any CPU
+		{813EDA7A-C0B4-4B07-8A46-8959B56AE644}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{813EDA7A-C0B4-4B07-8A46-8959B56AE644}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{813EDA7A-C0B4-4B07-8A46-8959B56AE644}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{813EDA7A-C0B4-4B07-8A46-8959B56AE644}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

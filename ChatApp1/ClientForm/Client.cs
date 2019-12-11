@@ -5,7 +5,7 @@ using System.Net.Sockets;
 using System.Text;
 using System.Threading;
 using System.Windows.Forms;
-
+using Communication;
 
 namespace ClientForm
 {
@@ -15,7 +15,6 @@ namespace ClientForm
         private string _ip;
 
         private TcpClient client;
-        private Net Net = null;
 
         //pages
         private LoginForm clientLogin;
@@ -36,8 +35,7 @@ namespace ClientForm
             this._ip = ip;
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Net = new Net();
-            Net.Log_event += connectionManagement;
+            
             login = new Thread(new ThreadStart(loginStart));
             login.Start(); 
 
@@ -45,7 +43,8 @@ namespace ClientForm
 
         public void closeConnection()
         {
-            Net.sendMessage(client.GetStream(), "@" + _username + " disconnecting" + " @ " + IP);
+            //doesnot WORK
+            Net.sendMessage(client.GetStream(), new Communication.Message("@" + _username + " disconnecting" + " @ " + IP));
             client.GetStream().Close();
             client.Close();
             login = new Thread(new ThreadStart(loginStart));
@@ -56,7 +55,7 @@ namespace ClientForm
         private void loginStart()
         {
             clientLogin = new LoginForm();
-            clientLogin.Log_event += connectionManagement;
+            clientLogin.Log_update += connectionManagement;
             Application.Run(clientLogin);
         }
 
@@ -64,6 +63,7 @@ namespace ClientForm
         {
             homePage = new HomePage(this._username);
             homePage.Log_event += connectionManagement;
+            
             //TODO
             //create tchat 
             //create grouptchat /topic
@@ -76,27 +76,32 @@ namespace ClientForm
         {
             if (e.Log)
             {
+                //login
                 connect(e.Username); 
             }
             else
             {
+                //logout
                 closeConnection(); 
 
             }
         }
 
-        public void connect(string username)
+        private void connect(string username)
         {
             this._username = username;
+
             try
             {
                 client = new TcpClient(this._ip, 8976);
+                Console.WriteLine("new Client created");
 
                 if (client.Connected)
                 {
                     //once connected, sends and receives messages 
-                    Net.sendMessage(client.GetStream(), "@" + username + "connected" + "@" + this.IP);
-                    Net.receiveMessage(this, client.GetStream());
+                    Net.sendMessage(client.GetStream(),new Communication.Message( "@" + username + "connected" + "@" + this.IP));
+                    Net.receiveMessage(client.GetStream());
+
                     //closing form
                     clientLogin.RequestStop();
 
@@ -105,6 +110,10 @@ namespace ClientForm
                         home = new Thread(new ThreadStart(homeStart));
                         home.Start(); 
                     }
+                }
+                else
+                {
+                    MessageBox.Show("Connexion failed"); 
                 }
 
             }
@@ -134,12 +143,34 @@ namespace ClientForm
             get { return _username; }
         }
 
-        public Log_Event(bool l, string u)
+        public Log_Event(bool l, string u) : base()
         {
             _log = l;
             _username = u; 
         }
 
+    }
+
+    public class New_Chat_Event : EventArgs
+    {
+        private string _name;
+        private bool _group; 
+
+        public string Name
+        {
+            get { return _name; }
+        }
+
+        public bool Group
+        {
+            get { return _group; }
+        }
+
+        public New_Chat_Event(bool g, string n) : base()
+        {
+            _name = n;
+            _group = g; 
+        }
     }
 
 }

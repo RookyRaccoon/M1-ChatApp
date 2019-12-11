@@ -28,57 +28,98 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.Online = new System.Windows.Forms.ListBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.sendMessage = new System.Windows.Forms.Button();
-            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
+            this.friend_label = new System.Windows.Forms.Label();
+            this.client_Label = new System.Windows.Forms.Label();
+            this.Messages_Feed = new System.Windows.Forms.RichTextBox();
+            this.Text_Send = new System.Windows.Forms.TextBox();
+            this.Btn_Send = new System.Windows.Forms.Button();
+            this.leave_group_button = new System.Windows.Forms.Button();
+            this.delete_group_button = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // Online
+            // friend_label
             // 
-            this.Online.FormattingEnabled = true;
-            this.Online.Location = new System.Drawing.Point(530, 23);
-            this.Online.Name = "Online";
-            this.Online.Size = new System.Drawing.Size(120, 342);
-            this.Online.TabIndex = 0;
+            this.friend_label.AutoSize = true;
+            this.friend_label.Location = new System.Drawing.Point(62, 71);
+            this.friend_label.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.friend_label.Name = "friend_label";
+            this.friend_label.Size = new System.Drawing.Size(51, 20);
+            this.friend_label.TabIndex = 0;
+            this.friend_label.Text = "label1";
             // 
-            // textBox1
+            // client_Label
             // 
-            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(26, 398);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(472, 26);
-            this.textBox1.TabIndex = 1;
+            this.client_Label.AutoSize = true;
+            this.client_Label.Location = new System.Drawing.Point(62, 555);
+            this.client_Label.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.client_Label.Name = "client_Label";
+            this.client_Label.Size = new System.Drawing.Size(51, 20);
+            this.client_Label.TabIndex = 1;
+            this.client_Label.Text = "label2";
             // 
-            // sendMessage
+            // Messages_Feed
             // 
-            this.sendMessage.Location = new System.Drawing.Point(530, 391);
-            this.sendMessage.Name = "sendMessage";
-            this.sendMessage.Size = new System.Drawing.Size(118, 37);
-            this.sendMessage.TabIndex = 2;
-            this.sendMessage.Text = "Send";
-            this.sendMessage.UseVisualStyleBackColor = true;
+            this.Messages_Feed.BackColor = System.Drawing.Color.White;
+            this.Messages_Feed.Location = new System.Drawing.Point(164, 32);
+            this.Messages_Feed.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.Messages_Feed.Name = "Messages_Feed";
+            this.Messages_Feed.ReadOnly = true;
+            this.Messages_Feed.Size = new System.Drawing.Size(540, 473);
+            this.Messages_Feed.TabIndex = 2;
+            this.Messages_Feed.Text = "";
             // 
-            // richTextBox1
+            // Text_Send
             // 
-            this.richTextBox1.Location = new System.Drawing.Point(26, 23);
-            this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(487, 342);
-            this.richTextBox1.TabIndex = 4;
-            this.richTextBox1.Text = "";
-            this.richTextBox1.TextChanged += new System.EventHandler(this.RichTextBox1_TextChanged);
+            this.Text_Send.Location = new System.Drawing.Point(164, 535);
+            this.Text_Send.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.Text_Send.Multiline = true;
+            this.Text_Send.Name = "Text_Send";
+            this.Text_Send.Size = new System.Drawing.Size(412, 90);
+            this.Text_Send.TabIndex = 3;
             // 
-            // ChatForm
+            // Btn_Send
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.Btn_Send.Location = new System.Drawing.Point(596, 532);
+            this.Btn_Send.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.Btn_Send.Name = "Btn_Send";
+            this.Btn_Send.Size = new System.Drawing.Size(108, 94);
+            this.Btn_Send.TabIndex = 4;
+            this.Btn_Send.Text = "Send";
+            this.Btn_Send.UseVisualStyleBackColor = true;
+            // 
+            // leave_group_button
+            // 
+            this.leave_group_button.Location = new System.Drawing.Point(37, 209);
+            this.leave_group_button.Name = "leave_group_button";
+            this.leave_group_button.Size = new System.Drawing.Size(97, 62);
+            this.leave_group_button.TabIndex = 5;
+            this.leave_group_button.Text = "Leave Group";
+            this.leave_group_button.UseVisualStyleBackColor = true;
+            // 
+            // delete_group_button
+            // 
+            this.delete_group_button.Location = new System.Drawing.Point(37, 122);
+            this.delete_group_button.Name = "delete_group_button";
+            this.delete_group_button.Size = new System.Drawing.Size(97, 62);
+            this.delete_group_button.TabIndex = 6;
+            this.delete_group_button.Text = "Delete Group";
+            this.delete_group_button.UseVisualStyleBackColor = true;
+            // 
+            // Tchat
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(665, 443);
-            this.Controls.Add(this.richTextBox1);
-            this.Controls.Add(this.sendMessage);
-            this.Controls.Add(this.textBox1);
-            this.Controls.Add(this.Online);
-            this.Name = "ChatForm";
-            this.Text = "ChatForm";
+            this.ClientSize = new System.Drawing.Size(738, 660);
+            this.Controls.Add(this.delete_group_button);
+            this.Controls.Add(this.leave_group_button);
+            this.Controls.Add(this.Btn_Send);
+            this.Controls.Add(this.Text_Send);
+            this.Controls.Add(this.Messages_Feed);
+            this.Controls.Add(this.client_Label);
+            this.Controls.Add(this.friend_label);
+            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.Name = "Tchat";
+            this.Text = "Tchat";
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -86,9 +127,12 @@
 
         #endregion
 
-        private System.Windows.Forms.ListBox Online;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.Button sendMessage;
-        private System.Windows.Forms.RichTextBox richTextBox1;
+        private System.Windows.Forms.Label friend_label;
+        private System.Windows.Forms.Label client_Label;
+        private System.Windows.Forms.RichTextBox Messages_Feed;
+        private System.Windows.Forms.TextBox Text_Send;
+        private System.Windows.Forms.Button Btn_Send;
+        private System.Windows.Forms.Button leave_group_button;
+        private System.Windows.Forms.Button delete_group_button;
     }
 }

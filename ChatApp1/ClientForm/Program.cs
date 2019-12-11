@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -14,9 +15,13 @@ namespace ClientForm
         [STAThread]
         static void Main()
         {
-            Application.EnableVisualStyles();
-            Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new LoginForm());
+            Thread client1 = new Thread(new ThreadStart(starting));
+            client1.Start();
+        }
+
+    public static void starting()
+        {
+            new Client("127.0.0.1"); 
         }
     }
 }

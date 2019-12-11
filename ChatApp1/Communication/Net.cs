@@ -1,15 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
-using System.Text;
-
 
 namespace Communication
 {
-    class Net
+    public class Net
     {
-
         public static void sendMessage(Stream s, Message m)
         {
             BinaryFormatter binary = new BinaryFormatter();
@@ -17,10 +13,9 @@ namespace Communication
         }
 
         public static Message receiveMessage(Stream s)
-        {
-            BinaryFormatter binary = new BinaryFormatter();
-            return (Message)binary.Deserialize(s);
-
+        {   
+                BinaryFormatter binary = new BinaryFormatter();
+                return (Message)binary.Deserialize(s);
         }
     }
 }

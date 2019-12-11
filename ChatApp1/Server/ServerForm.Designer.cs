@@ -28,56 +28,58 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.connectButton = new System.Windows.Forms.Button();
+            this.sendTextButton = new System.Windows.Forms.Button();
             this.serverStatus = new System.Windows.Forms.RichTextBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.sendButton = new System.Windows.Forms.Button();
+            this.serverSendText = new System.Windows.Forms.TextBox();
+            this.listenButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // connectButton
+            // sendTextButton
             // 
-            this.connectButton.Location = new System.Drawing.Point(76, 204);
-            this.connectButton.Name = "connectButton";
-            this.connectButton.Size = new System.Drawing.Size(75, 23);
-            this.connectButton.TabIndex = 0;
-            this.connectButton.Text = "Connect";
-            this.connectButton.UseVisualStyleBackColor = true;
-            this.connectButton.Click += new System.EventHandler(this.ConnectButton_Click);
+            this.sendTextButton.Location = new System.Drawing.Point(153, 315);
+            this.sendTextButton.Name = "sendTextButton";
+            this.sendTextButton.Size = new System.Drawing.Size(174, 36);
+            this.sendTextButton.TabIndex = 1;
+            this.sendTextButton.Text = "Send";
+            this.sendTextButton.UseVisualStyleBackColor = true;
+            this.sendTextButton.Click += new System.EventHandler(this.SendTextButton_Click);
             // 
             // serverStatus
             // 
-            this.serverStatus.Location = new System.Drawing.Point(23, 31);
+            this.serverStatus.BackColor = System.Drawing.Color.White;
+            this.serverStatus.Location = new System.Drawing.Point(53, 86);
             this.serverStatus.Name = "serverStatus";
-            this.serverStatus.Size = new System.Drawing.Size(230, 167);
-            this.serverStatus.TabIndex = 3;
+            this.serverStatus.ReadOnly = true;
+            this.serverStatus.Size = new System.Drawing.Size(365, 160);
+            this.serverStatus.TabIndex = 2;
             this.serverStatus.Text = "";
             // 
-            // textBox1
+            // serverSendText
             // 
-            this.textBox1.Location = new System.Drawing.Point(289, 47);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(166, 20);
-            this.textBox1.TabIndex = 4;
+            this.serverSendText.Location = new System.Drawing.Point(53, 271);
+            this.serverSendText.Name = "serverSendText";
+            this.serverSendText.Size = new System.Drawing.Size(364, 20);
+            this.serverSendText.TabIndex = 3;
             // 
-            // sendButton
+            // listenButton
             // 
-            this.sendButton.Location = new System.Drawing.Point(341, 73);
-            this.sendButton.Name = "sendButton";
-            this.sendButton.Size = new System.Drawing.Size(75, 23);
-            this.sendButton.TabIndex = 5;
-            this.sendButton.Text = "send";
-            this.sendButton.UseVisualStyleBackColor = true;
-            this.sendButton.Click += new System.EventHandler(this.SendButton_Click);
+            this.listenButton.Location = new System.Drawing.Point(153, 28);
+            this.listenButton.Name = "listenButton";
+            this.listenButton.Size = new System.Drawing.Size(174, 36);
+            this.listenButton.TabIndex = 4;
+            this.listenButton.Text = "Listen";
+            this.listenButton.UseVisualStyleBackColor = true;
+            this.listenButton.Click += new System.EventHandler(this.ListenButton_Click);
             // 
             // ServerForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(521, 314);
-            this.Controls.Add(this.sendButton);
-            this.Controls.Add(this.textBox1);
+            this.ClientSize = new System.Drawing.Size(473, 399);
+            this.Controls.Add(this.listenButton);
+            this.Controls.Add(this.serverSendText);
             this.Controls.Add(this.serverStatus);
-            this.Controls.Add(this.connectButton);
+            this.Controls.Add(this.sendTextButton);
             this.Name = "ServerForm";
             this.Text = "Server";
             this.ResumeLayout(false);
@@ -86,10 +88,9 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.Button connectButton;
+        private System.Windows.Forms.Button sendTextButton;
         private System.Windows.Forms.RichTextBox serverStatus;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.Button sendButton;
+        private System.Windows.Forms.TextBox serverSendText;
+        private System.Windows.Forms.Button listenButton;
     }
 }
