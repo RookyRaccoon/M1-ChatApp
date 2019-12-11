@@ -33,6 +33,7 @@ namespace ClientForm
             Application.ApplicationExit += new EventHandler(this.applicationExit);
         }
 
+        #region Entering and exiting
         public void status(string data)
         {
             clientStatus.Text = data;
@@ -42,22 +43,27 @@ namespace ClientForm
         {
             this.Close(); 
         }
-        private void LogoutButton_Click(object sender, EventArgs e)
-        {
-
-            Log_event(this, new Log_Event(false, ""));
-            this.Close(); 
-        }
+       
 
         private void applicationExit(object sender, EventArgs e)
         {
             Log_event(this, new Log_Event (false, ""));
             this.Close();
         }
+        #endregion
 
+
+        #region components
         private void Create_group_chat_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
 
         }
+        private void LogoutButton_Click(object sender, EventArgs e)
+        {
+
+            Log_event(this, new Log_Event(false, ""));
+            this.Close();
+        }
+        #endregion
     }
 }

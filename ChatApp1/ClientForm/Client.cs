@@ -173,4 +173,19 @@ namespace ClientForm
         }
     }
 
+    public class New_Group_Event : EventArgs
+    {
+        private string _name; 
+        public string Name
+        {
+            get { return _name;  }
+
+        }
+
+        New_Group_Event(string n) : base()
+        {
+            _name = n; 
+        }
+    }
+
 }

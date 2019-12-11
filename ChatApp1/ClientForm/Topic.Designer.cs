@@ -28,56 +28,63 @@
         private void InitializeComponent()
         {
             this.label1 = new System.Windows.Forms.Label();
-            this.topic_box = new System.Windows.Forms.TextBox();
-            this.Cancel_button = new System.Windows.Forms.Button();
-            this.create_chat = new System.Windows.Forms.Button();
+            this.textBoxTopic = new System.Windows.Forms.TextBox();
+            this.buttonCancel = new System.Windows.Forms.Button();
+            this.buttonCreateGroupChat = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(111, 105);
+            this.label1.Location = new System.Drawing.Point(74, 68);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(119, 20);
+            this.label1.Size = new System.Drawing.Size(81, 13);
             this.label1.TabIndex = 0;
             this.label1.Text = "Choose a topic:";
             // 
-            // topic_box
+            // textBoxTopic
             // 
-            this.topic_box.Location = new System.Drawing.Point(308, 105);
-            this.topic_box.Name = "topic_box";
-            this.topic_box.Size = new System.Drawing.Size(201, 26);
-            this.topic_box.TabIndex = 1;
+            this.textBoxTopic.Location = new System.Drawing.Point(205, 68);
+            this.textBoxTopic.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.textBoxTopic.Name = "textBoxTopic";
+            this.textBoxTopic.Size = new System.Drawing.Size(135, 20);
+            this.textBoxTopic.TabIndex = 1;
             // 
-            // Cancel_button
+            // buttonCancel
             // 
-            this.Cancel_button.Location = new System.Drawing.Point(170, 173);
-            this.Cancel_button.Name = "Cancel_button";
-            this.Cancel_button.Size = new System.Drawing.Size(89, 42);
-            this.Cancel_button.TabIndex = 2;
-            this.Cancel_button.Text = "Cancel";
-            this.Cancel_button.UseVisualStyleBackColor = true;
+            this.buttonCancel.Location = new System.Drawing.Point(113, 112);
+            this.buttonCancel.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.buttonCancel.Name = "buttonCancel";
+            this.buttonCancel.Size = new System.Drawing.Size(59, 27);
+            this.buttonCancel.TabIndex = 2;
+            this.buttonCancel.Text = "Cancel";
+            this.buttonCancel.UseVisualStyleBackColor = true;
+            this.buttonCancel.Click += new System.EventHandler(this.ButtonCancel_Click);
             // 
-            // create_chat
+            // buttonCreateGroupChat
             // 
-            this.create_chat.Location = new System.Drawing.Point(331, 173);
-            this.create_chat.Name = "create_chat";
-            this.create_chat.Size = new System.Drawing.Size(155, 42);
-            this.create_chat.TabIndex = 3;
-            this.create_chat.Text = "Create Group chat";
-            this.create_chat.UseVisualStyleBackColor = true;
+            this.buttonCreateGroupChat.Location = new System.Drawing.Point(221, 112);
+            this.buttonCreateGroupChat.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.buttonCreateGroupChat.Name = "buttonCreateGroupChat";
+            this.buttonCreateGroupChat.Size = new System.Drawing.Size(103, 27);
+            this.buttonCreateGroupChat.TabIndex = 3;
+            this.buttonCreateGroupChat.Text = "Create Group Chat";
+            this.buttonCreateGroupChat.UseVisualStyleBackColor = true;
+            this.buttonCreateGroupChat.Click += new System.EventHandler(this.ButtonCreateGroupChat_Click);
             // 
             // Topic
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(608, 271);
-            this.Controls.Add(this.create_chat);
-            this.Controls.Add(this.Cancel_button);
-            this.Controls.Add(this.topic_box);
+            this.ClientSize = new System.Drawing.Size(405, 176);
+            this.Controls.Add(this.buttonCreateGroupChat);
+            this.Controls.Add(this.buttonCancel);
+            this.Controls.Add(this.textBoxTopic);
             this.Controls.Add(this.label1);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "Topic";
-            this.Text = "Topic";
+            this.Text = "Create Topic";
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -86,9 +93,9 @@
         #endregion
 
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox topic_box;
-        private System.Windows.Forms.Button Cancel_button;
-        private System.Windows.Forms.Button create_chat;
+        private System.Windows.Forms.TextBox textBoxTopic;
+        private System.Windows.Forms.Button buttonCancel;
+        private System.Windows.Forms.Button buttonCreateGroupChat;
 
     }
 }
