@@ -17,11 +17,17 @@ namespace ClientForm
         {
             Thread client1 = new Thread(new ThreadStart(starting));
             client1.Start();
+            Thread client2 = new Thread(new ThreadStart(starting2));
+            client2.Start();
         }
 
     public static void starting()
         {
             new Client("127.0.0.1"); 
+        }
+        public static void starting2()
+        {
+            new Client("127.0.0.2");
         }
     }
 }

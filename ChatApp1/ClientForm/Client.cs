@@ -174,6 +174,9 @@ namespace ClientForm
         }
     }
 
+    #region eventargs
+
+    //for login
     public class Log_Event : EventArgs
     {
         private bool _log;
@@ -196,6 +199,7 @@ namespace ClientForm
 
     }
 
+    //for chat form
     public class New_Chat_Event : EventArgs
     {
         private string _name;
@@ -218,6 +222,7 @@ namespace ClientForm
         }
     }
 
+    //for group chat
     public class New_Group_Event : EventArgs
     {
         private string _name; 
@@ -232,5 +237,22 @@ namespace ClientForm
             _name = n; 
         }
     }
+
+    //chat sending message 
+    public class Send_Event : EventArgs
+    {
+        private string _message; 
+       public string Message
+        {
+            get { return _message; }
+        }
+
+        public Send_Event(string m) : base()
+        {
+            _message = m; 
+        }
+
+    }
+    #endregion
 
 }

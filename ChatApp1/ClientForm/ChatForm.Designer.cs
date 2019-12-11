@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.labelFriend = new System.Windows.Forms.Label();
-            this.client_Label = new System.Windows.Forms.Label();
+            this.labelReceiver = new System.Windows.Forms.Label();
+            this.labelMyName = new System.Windows.Forms.Label();
             this.messages = new System.Windows.Forms.RichTextBox();
             this.textBoxSend = new System.Windows.Forms.TextBox();
             this.buttonSend = new System.Windows.Forms.Button();
@@ -37,23 +37,23 @@
             this.buttonDelete = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // labelFriend
+            // labelReceiver
             // 
-            this.labelFriend.AutoSize = true;
-            this.labelFriend.Location = new System.Drawing.Point(22, 45);
-            this.labelFriend.Name = "labelFriend";
-            this.labelFriend.Size = new System.Drawing.Size(74, 13);
-            this.labelFriend.TabIndex = 0;
-            this.labelFriend.Text = "receiver name";
+            this.labelReceiver.AutoSize = true;
+            this.labelReceiver.Location = new System.Drawing.Point(22, 45);
+            this.labelReceiver.Name = "labelReceiver";
+            this.labelReceiver.Size = new System.Drawing.Size(74, 13);
+            this.labelReceiver.TabIndex = 0;
+            this.labelReceiver.Text = "receiver name";
             // 
-            // client_Label
+            // labelMyName
             // 
-            this.client_Label.AutoSize = true;
-            this.client_Label.Location = new System.Drawing.Point(41, 361);
-            this.client_Label.Name = "client_Label";
-            this.client_Label.Size = new System.Drawing.Size(48, 13);
-            this.client_Label.TabIndex = 1;
-            this.client_Label.Text = "myName";
+            this.labelMyName.AutoSize = true;
+            this.labelMyName.Location = new System.Drawing.Point(41, 361);
+            this.labelMyName.Name = "labelMyName";
+            this.labelMyName.Size = new System.Drawing.Size(48, 13);
+            this.labelMyName.TabIndex = 1;
+            this.labelMyName.Text = "myName";
             // 
             // messages
             // 
@@ -115,8 +115,8 @@
             this.Controls.Add(this.buttonSend);
             this.Controls.Add(this.textBoxSend);
             this.Controls.Add(this.messages);
-            this.Controls.Add(this.client_Label);
-            this.Controls.Add(this.labelFriend);
+            this.Controls.Add(this.labelMyName);
+            this.Controls.Add(this.labelReceiver);
             this.Name = "ChatForm";
             this.Text = "Tchat";
             this.ResumeLayout(false);
@@ -126,8 +126,8 @@
 
         #endregion
 
-        private System.Windows.Forms.Label labelFriend;
-        private System.Windows.Forms.Label client_Label;
+        private System.Windows.Forms.Label labelReceiver;
+        private System.Windows.Forms.Label labelMyName;
         private System.Windows.Forms.RichTextBox messages;
         private System.Windows.Forms.TextBox textBoxSend;
         private System.Windows.Forms.Button buttonSend;
