@@ -24,6 +24,13 @@ namespace ClientForm
         //threads for the pages
         private Thread login;
         private Thread home = null;
+
+        private List<ChatForm> chats = new List<ChatForm>();
+        private List<Topic> topics = new List<Topic>();
+        private List<String> members_connected = new List<String>();
+        private List<String> group_members_connected = new List<String>();
+
+
         
         public string IP
         {
@@ -41,16 +48,10 @@ namespace ClientForm
 
         }
 
-        public void closeConnection()
-        {
-            //doesnot WORK
-            Net.sendMessage(client.GetStream(), new Communication.Message("@" + _username + " disconnecting" + " @ " + IP));
-            client.GetStream().Close();
-            client.Close();
-            login = new Thread(new ThreadStart(loginStart));
-            login.Start(); 
-        }
-          
+       
+
+        #region pages
+
         //run login page
         private void loginStart()
         {
@@ -71,18 +72,24 @@ namespace ClientForm
 
         }
 
+        #endregion
+
+
+
+        #region connection
+
         //if logevent then will send a connection
         private void connectionManagement(object sender, Log_Event e)
         {
             if (e.Log)
             {
                 //login
-                connect(e.Username); 
+                connect(e.Username);
             }
             else
             {
                 //logout
-                closeConnection(); 
+                closeConnection();
 
             }
         }
@@ -122,7 +129,45 @@ namespace ClientForm
 
             }
         }
+        public void closeConnection()
+        {
+            //doesnot WORK
+            Net.sendMessage(client.GetStream(), new Communication.Message("@" + _username + " disconnecting" + " @ " + IP));
+            client.GetStream().Close();
+            client.Close();
+            login = new Thread(new ThreadStart(loginStart));
+            login.Start();
+        }
 
+        #endregion
+
+
+        private void nexChat(object sender, New_Chat_Event e)
+        {
+            ChatForm new_chat;
+
+
+        }
+
+        #region groupchat 
+
+        private void createGroupChat(object sender, New_Group_Event e)
+        {
+
+        }
+
+
+        private ChatForm findChat()
+        {
+            lock (this)
+            {
+                foreach (ChatForm chat in chats)
+                {
+                    if(chat)
+                }
+            }
+        }
+        #endregion
         public void messageHandling(string data)
         {
 
@@ -182,7 +227,7 @@ namespace ClientForm
 
         }
 
-        New_Group_Event(string n) : base()
+       public New_Group_Event(string n) : base()
         {
             _name = n; 
         }

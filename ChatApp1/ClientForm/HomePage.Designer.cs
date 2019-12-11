@@ -30,7 +30,7 @@
         {
             this.clientName = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.create_group_chat = new System.Windows.Forms.LinkLabel();
+            this.linkCreateGroupChat = new System.Windows.Forms.LinkLabel();
             this.clientStatus = new System.Windows.Forms.Label();
             this.LogoutButton = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
@@ -47,23 +47,23 @@
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.create_group_chat);
+            this.panel1.Controls.Add(this.linkCreateGroupChat);
             this.panel1.Location = new System.Drawing.Point(26, 116);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(378, 30);
             this.panel1.TabIndex = 3;
             // 
-            // create_group_chat
+            // linkCreateGroupChat
             // 
-            this.create_group_chat.AutoSize = true;
-            this.create_group_chat.LinkColor = System.Drawing.Color.Black;
-            this.create_group_chat.Location = new System.Drawing.Point(167, 10);
-            this.create_group_chat.Name = "create_group_chat";
-            this.create_group_chat.Size = new System.Drawing.Size(77, 13);
-            this.create_group_chat.TabIndex = 2;
-            this.create_group_chat.TabStop = true;
-            this.create_group_chat.Text = "Create a group";
-            this.create_group_chat.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.Create_group_chat_LinkClicked);
+            this.linkCreateGroupChat.AutoSize = true;
+            this.linkCreateGroupChat.LinkColor = System.Drawing.Color.Black;
+            this.linkCreateGroupChat.Location = new System.Drawing.Point(167, 10);
+            this.linkCreateGroupChat.Name = "linkCreateGroupChat";
+            this.linkCreateGroupChat.Size = new System.Drawing.Size(77, 13);
+            this.linkCreateGroupChat.TabIndex = 2;
+            this.linkCreateGroupChat.TabStop = true;
+            this.linkCreateGroupChat.Text = "Create a group";
+            this.linkCreateGroupChat.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.LinkCreateGroupChat_LinkClicked);
             // 
             // clientStatus
             // 
@@ -106,7 +106,7 @@
 
         private System.Windows.Forms.Label clientName;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.LinkLabel create_group_chat;
+        private System.Windows.Forms.LinkLabel linkCreateGroupChat;
         private System.Windows.Forms.Label clientStatus;
         private System.Windows.Forms.Button LogoutButton;
     }

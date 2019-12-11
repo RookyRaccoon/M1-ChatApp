@@ -28,97 +28,96 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.friend_label = new System.Windows.Forms.Label();
+            this.labelFriend = new System.Windows.Forms.Label();
             this.client_Label = new System.Windows.Forms.Label();
-            this.Messages_Feed = new System.Windows.Forms.RichTextBox();
-            this.Text_Send = new System.Windows.Forms.TextBox();
-            this.Btn_Send = new System.Windows.Forms.Button();
-            this.leave_group_button = new System.Windows.Forms.Button();
-            this.delete_group_button = new System.Windows.Forms.Button();
+            this.messages = new System.Windows.Forms.RichTextBox();
+            this.textBoxSend = new System.Windows.Forms.TextBox();
+            this.buttonSend = new System.Windows.Forms.Button();
+            this.buttonLeave = new System.Windows.Forms.Button();
+            this.buttonDelete = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // friend_label
+            // labelFriend
             // 
-            this.friend_label.AutoSize = true;
-            this.friend_label.Location = new System.Drawing.Point(62, 71);
-            this.friend_label.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.friend_label.Name = "friend_label";
-            this.friend_label.Size = new System.Drawing.Size(51, 20);
-            this.friend_label.TabIndex = 0;
-            this.friend_label.Text = "label1";
+            this.labelFriend.AutoSize = true;
+            this.labelFriend.Location = new System.Drawing.Point(22, 45);
+            this.labelFriend.Name = "labelFriend";
+            this.labelFriend.Size = new System.Drawing.Size(74, 13);
+            this.labelFriend.TabIndex = 0;
+            this.labelFriend.Text = "receiver name";
             // 
             // client_Label
             // 
             this.client_Label.AutoSize = true;
-            this.client_Label.Location = new System.Drawing.Point(62, 555);
-            this.client_Label.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.client_Label.Location = new System.Drawing.Point(41, 361);
             this.client_Label.Name = "client_Label";
-            this.client_Label.Size = new System.Drawing.Size(51, 20);
+            this.client_Label.Size = new System.Drawing.Size(48, 13);
             this.client_Label.TabIndex = 1;
-            this.client_Label.Text = "label2";
+            this.client_Label.Text = "myName";
             // 
-            // Messages_Feed
+            // messages
             // 
-            this.Messages_Feed.BackColor = System.Drawing.Color.White;
-            this.Messages_Feed.Location = new System.Drawing.Point(164, 32);
-            this.Messages_Feed.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.Messages_Feed.Name = "Messages_Feed";
-            this.Messages_Feed.ReadOnly = true;
-            this.Messages_Feed.Size = new System.Drawing.Size(540, 473);
-            this.Messages_Feed.TabIndex = 2;
-            this.Messages_Feed.Text = "";
+            this.messages.BackColor = System.Drawing.Color.White;
+            this.messages.Location = new System.Drawing.Point(109, 21);
+            this.messages.Name = "messages";
+            this.messages.ReadOnly = true;
+            this.messages.Size = new System.Drawing.Size(361, 309);
+            this.messages.TabIndex = 2;
+            this.messages.Text = "";
             // 
-            // Text_Send
+            // textBoxSend
             // 
-            this.Text_Send.Location = new System.Drawing.Point(164, 535);
-            this.Text_Send.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.Text_Send.Multiline = true;
-            this.Text_Send.Name = "Text_Send";
-            this.Text_Send.Size = new System.Drawing.Size(412, 90);
-            this.Text_Send.TabIndex = 3;
+            this.textBoxSend.Location = new System.Drawing.Point(109, 348);
+            this.textBoxSend.Multiline = true;
+            this.textBoxSend.Name = "textBoxSend";
+            this.textBoxSend.Size = new System.Drawing.Size(276, 60);
+            this.textBoxSend.TabIndex = 3;
             // 
-            // Btn_Send
+            // buttonSend
             // 
-            this.Btn_Send.Location = new System.Drawing.Point(596, 532);
-            this.Btn_Send.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.Btn_Send.Name = "Btn_Send";
-            this.Btn_Send.Size = new System.Drawing.Size(108, 94);
-            this.Btn_Send.TabIndex = 4;
-            this.Btn_Send.Text = "Send";
-            this.Btn_Send.UseVisualStyleBackColor = true;
+            this.buttonSend.Location = new System.Drawing.Point(397, 346);
+            this.buttonSend.Name = "buttonSend";
+            this.buttonSend.Size = new System.Drawing.Size(72, 61);
+            this.buttonSend.TabIndex = 4;
+            this.buttonSend.Text = "Send";
+            this.buttonSend.UseVisualStyleBackColor = true;
+            this.buttonSend.Click += new System.EventHandler(this.ButtonSend_Click);
             // 
-            // leave_group_button
+            // buttonLeave
             // 
-            this.leave_group_button.Location = new System.Drawing.Point(37, 209);
-            this.leave_group_button.Name = "leave_group_button";
-            this.leave_group_button.Size = new System.Drawing.Size(97, 62);
-            this.leave_group_button.TabIndex = 5;
-            this.leave_group_button.Text = "Leave Group";
-            this.leave_group_button.UseVisualStyleBackColor = true;
+            this.buttonLeave.Location = new System.Drawing.Point(25, 136);
+            this.buttonLeave.Margin = new System.Windows.Forms.Padding(2);
+            this.buttonLeave.Name = "buttonLeave";
+            this.buttonLeave.Size = new System.Drawing.Size(65, 40);
+            this.buttonLeave.TabIndex = 5;
+            this.buttonLeave.Text = "Leave Group";
+            this.buttonLeave.UseVisualStyleBackColor = true;
+            this.buttonLeave.Click += new System.EventHandler(this.ButtonLeave_Click);
             // 
-            // delete_group_button
+            // buttonDelete
             // 
-            this.delete_group_button.Location = new System.Drawing.Point(37, 122);
-            this.delete_group_button.Name = "delete_group_button";
-            this.delete_group_button.Size = new System.Drawing.Size(97, 62);
-            this.delete_group_button.TabIndex = 6;
-            this.delete_group_button.Text = "Delete Group";
-            this.delete_group_button.UseVisualStyleBackColor = true;
+            this.buttonDelete.Location = new System.Drawing.Point(25, 79);
+            this.buttonDelete.Margin = new System.Windows.Forms.Padding(2);
+            this.buttonDelete.Name = "buttonDelete";
+            this.buttonDelete.Size = new System.Drawing.Size(65, 40);
+            this.buttonDelete.TabIndex = 6;
+            this.buttonDelete.Text = "Delete Group";
+            this.buttonDelete.UseVisualStyleBackColor = true;
+            this.buttonDelete.Click += new System.EventHandler(this.ButtonDelete_Click);
             // 
-            // Tchat
+            // ChatForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(738, 660);
-            this.Controls.Add(this.delete_group_button);
-            this.Controls.Add(this.leave_group_button);
-            this.Controls.Add(this.Btn_Send);
-            this.Controls.Add(this.Text_Send);
-            this.Controls.Add(this.Messages_Feed);
+            this.ClientSize = new System.Drawing.Size(492, 429);
+            this.Controls.Add(this.buttonDelete);
+            this.Controls.Add(this.buttonLeave);
+            this.Controls.Add(this.buttonSend);
+            this.Controls.Add(this.textBoxSend);
+            this.Controls.Add(this.messages);
             this.Controls.Add(this.client_Label);
-            this.Controls.Add(this.friend_label);
-            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.Name = "Tchat";
+            this.Controls.Add(this.labelFriend);
+            this.Name = "ChatForm";
             this.Text = "Tchat";
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -127,12 +126,12 @@
 
         #endregion
 
-        private System.Windows.Forms.Label friend_label;
+        private System.Windows.Forms.Label labelFriend;
         private System.Windows.Forms.Label client_Label;
-        private System.Windows.Forms.RichTextBox Messages_Feed;
-        private System.Windows.Forms.TextBox Text_Send;
-        private System.Windows.Forms.Button Btn_Send;
-        private System.Windows.Forms.Button leave_group_button;
-        private System.Windows.Forms.Button delete_group_button;
+        private System.Windows.Forms.RichTextBox messages;
+        private System.Windows.Forms.TextBox textBoxSend;
+        private System.Windows.Forms.Button buttonSend;
+        private System.Windows.Forms.Button buttonLeave;
+        private System.Windows.Forms.Button buttonDelete;
     }
 }
