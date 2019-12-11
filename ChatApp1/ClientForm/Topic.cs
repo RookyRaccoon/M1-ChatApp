@@ -10,6 +10,10 @@ using System.Windows.Forms;
 
 namespace ClientForm
 {
+    /// <summary>
+    /// 
+    /// Class for creating a new topic <=> a new group chat 
+    /// </summary>
     public partial class Topic : Form
     {
         public event EventHandler<New_Group_Chat_Event> new_group_chat_event;

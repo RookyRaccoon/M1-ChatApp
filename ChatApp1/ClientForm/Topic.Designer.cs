@@ -39,14 +39,14 @@
             this.label1.Location = new System.Drawing.Point(74, 68);
             this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(81, 13);
+            this.label1.Size = new System.Drawing.Size(110, 13);
             this.label1.TabIndex = 0;
-            this.label1.Text = "Choose a topic:";
+            this.label1.Text = "Please enter a topic : ";
             // 
             // textBoxTopic
             // 
             this.textBoxTopic.Location = new System.Drawing.Point(205, 68);
-            this.textBoxTopic.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.textBoxTopic.Margin = new System.Windows.Forms.Padding(2);
             this.textBoxTopic.Name = "textBoxTopic";
             this.textBoxTopic.Size = new System.Drawing.Size(135, 20);
             this.textBoxTopic.TabIndex = 1;
@@ -54,7 +54,7 @@
             // buttonCancel
             // 
             this.buttonCancel.Location = new System.Drawing.Point(113, 112);
-            this.buttonCancel.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.buttonCancel.Margin = new System.Windows.Forms.Padding(2);
             this.buttonCancel.Name = "buttonCancel";
             this.buttonCancel.Size = new System.Drawing.Size(59, 27);
             this.buttonCancel.TabIndex = 2;
@@ -65,7 +65,7 @@
             // buttonCreateGroupChat
             // 
             this.buttonCreateGroupChat.Location = new System.Drawing.Point(221, 112);
-            this.buttonCreateGroupChat.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.buttonCreateGroupChat.Margin = new System.Windows.Forms.Padding(2);
             this.buttonCreateGroupChat.Name = "buttonCreateGroupChat";
             this.buttonCreateGroupChat.Size = new System.Drawing.Size(103, 27);
             this.buttonCreateGroupChat.TabIndex = 3;
@@ -82,7 +82,7 @@
             this.Controls.Add(this.buttonCancel);
             this.Controls.Add(this.textBoxTopic);
             this.Controls.Add(this.label1);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "Topic";
             this.Text = "Create Topic";
             this.ResumeLayout(false);

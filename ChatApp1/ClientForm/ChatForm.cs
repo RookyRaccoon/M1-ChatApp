@@ -19,8 +19,12 @@ namespace ClientForm
         private bool _can_send_msg;
 
         public event EventHandler<Send_Event> send_event;
+        public delegate void DelegateRasing(string message); 
+        public event EventHandler<New_Group_Modif_Event> new_group_modif_event;
+        public delegate void DelegateModifGroup(string data, bool del); 
 
         delegate void SetText(string text);
+        delegate void Exit();
         public bool Group
         {
             get { return _group; }
@@ -28,7 +32,7 @@ namespace ClientForm
         }
 
 
-        public string Username
+        public string ChatName
         {
             get { return _name; }
             set { _name = Name; }
@@ -62,6 +66,20 @@ namespace ClientForm
 
         }
 
+        public void exit()
+        {
+            if (this.InvokeRequired)
+            {
+                Exit e = new Exit(exit);
+                this.Invoke(e, new object[] { });
+            }
+            else
+            {
+                this.Close(); 
+            }
+        }
+
+        #region message
         public void updateMessage(string data)
         {
             if (this.messages.InvokeRequired)
@@ -72,7 +90,6 @@ namespace ClientForm
             }
         }
 
-        #region message
         public void message_sent(bool sent)
         {
             if (sent)
@@ -94,12 +111,14 @@ namespace ClientForm
         #region components
         private void ButtonDelete_Click(object sender, EventArgs e)
         {
-
+            new_group_modif_event(this, new New_Group_Modif_Event(_receiverName, true));
+            this.exit(); 
         }
 
         private void ButtonLeave_Click(object sender, EventArgs e)
         {
-
+            new_group_modif_event(this, new New_Group_Modif_Event(_receiverName, false));
+            this.exit();
         }
 
         /* //words[0] --> name of the sender

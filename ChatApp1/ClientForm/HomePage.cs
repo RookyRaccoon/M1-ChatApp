@@ -29,6 +29,7 @@ namespace ClientForm
         public delegate void DelegateString(string data);
 
         public event EventHandler<New_Group_Event> New_group_event;
+
         public HomePage(string name)
         {
             InitializeComponent();

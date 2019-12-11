@@ -25,11 +25,12 @@ namespace ClientForm
         private Thread login;
         private Thread home = null;
 
+        //
         private List<ChatForm> chats = new List<ChatForm>();
         private List<Topic> topics = new List<Topic>();
         private List<String> members_connected = new List<String>();
         private List<String> group_members_connected = new List<String>();
-
+        private List<String> mygroups = new List<String>(); 
 
         
         public string IP
@@ -65,6 +66,8 @@ namespace ClientForm
             homePage = new HomePage(this._username);
             homePage.Log_event += connectionManagement;
             
+            homePage.New_chat_event +=newChat;
+            homePage.New_group_event +=createGroupChat;
             //TODO
             //create tchat 
             //create grouptchat /topic
@@ -94,6 +97,9 @@ namespace ClientForm
             }
         }
 
+
+        //connection to the server 
+        //by default on port 8976
         private void connect(string username)
         {
             this._username = username;
@@ -101,7 +107,6 @@ namespace ClientForm
             try
             {
                 client = new TcpClient(this._ip, 8976);
-                Console.WriteLine("new Client created");
 
                 if (client.Connected)
                 {
@@ -124,9 +129,9 @@ namespace ClientForm
                 }
 
             }
-            catch
+            catch (Exception ex)
             {
-
+                MessageBox.Show(ex.Message);
             }
         }
         public void closeConnection()
@@ -141,13 +146,85 @@ namespace ClientForm
 
         #endregion
 
+        private bool clientSent(string m)
+        {
+            try
+            {
+                Net.sendMessage(client.GetStream(), new Communication.Message(m));
+                return true;
+            }
+            catch
+            {
+                return false; 
+            }
+        }
 
-        private void nexChat(object sender, New_Chat_Event e)
+        //sending message 
+        private void sendMessage(object sender, Send_Event e)
+        {
+            ChatForm chat = sender as ChatForm;
+            chat.message_sent(clientSent(e.Message));
+
+        }
+
+        #region Chat 
+        private void newChat(object sender, New_Chat_Event e)
         {
             ChatForm new_chat;
 
+            if(findChat(e.Name) == null) 
+            {
+                if(e.Group && !findGroup(e.Name))
+                {
+                    mygroups.Add(e.Name);
+                    new_chat = new ChatForm(this._username, e.Name, true);
+                    new_chat.new_group_modif_event += toGroup;
+                    Net.sendMessage(client.GetStream(), new Communication.Message("@" + _username + "#JoinGCtMessage" + "@" + e.Name));
+
+                  
+                }
+                else
+                {
+                    return;
+                }
+            }
+            else
+            {
+                //create private
+                new_chat = new ChatForm(this._username, e.Name, false);
+
+            }
+
+            new_chat.send_event += sendMessage;
+            chats.Add(new_chat);
+
+            new Thread(() =>
+            {
+                Application.Run(new_chat);
+                // TO do à enlever de liste pour le rouvrir later
+
+            }).Start();
+
 
         }
+
+
+        //Check if chatroom already exists 
+        private ChatForm findChat(string name)
+        {
+            lock (this)
+            {
+                foreach (ChatForm chat in chats)
+                {
+                    if(chat.ReceiverName == name)
+                    {
+                        return chat; 
+                    }
+                }
+                return null; 
+            }
+        }
+        #endregion
 
         #region groupchat 
 
@@ -156,16 +233,33 @@ namespace ClientForm
 
         }
 
-
-        private ChatForm findChat()
+        //if i leave or delete a group
+        private void toGroup(object sender,New_Group_Modif_Event e)
         {
-            lock (this)
+            if (e.Delete)
             {
-                foreach (ChatForm chat in chats)
+                Net.sendMessage(client.GetStream(), new Communication.Message("@" + _username + "#DeleteGC" + "@" + e.Data));
+
+            }
+            else
+            {
+                Net.sendMessage(client.GetStream(), new Communication.Message("@" + _username + "#LeaveGC" + "@" + e.Data)); 
+
+            }
+
+            mygroups.Remove(e.Data);
+        }
+
+        private bool findGroup(string name)
+        {
+            foreach(string n in mygroups)
+            {
+                if (n == name)
                 {
-                    if(chat)
+                    return true;
                 }
             }
+            return false; 
         }
         #endregion
         public void messageHandling(string data)
@@ -199,7 +293,7 @@ namespace ClientForm
 
     }
 
-    //for chat form
+    //for chat form boolean whether or not it is a group chat 
     public class New_Chat_Event : EventArgs
     {
         private string _name;
@@ -222,7 +316,7 @@ namespace ClientForm
         }
     }
 
-    //for group chat
+    //for group chat / topic creation
     public class New_Group_Event : EventArgs
     {
         private string _name; 
@@ -238,6 +332,29 @@ namespace ClientForm
         }
     }
 
+    //for leaving the group and deleting it  
+    public class New_Group_Modif_Event : EventArgs
+    {
+        private string _data;
+        private bool _do_delete;
+
+        public string Data
+        {
+            get { return _data; }
+        }
+
+        public bool Delete
+        {
+            get { return _do_delete; }
+        }
+
+        public New_Group_Modif_Event(string data, bool del) : base()
+        {
+            _data = data;
+            _do_delete = del;
+        }
+
+    }
     //chat sending message 
     public class Send_Event : EventArgs
     {
@@ -251,6 +368,7 @@ namespace ClientForm
         {
             _message = m; 
         }
+
 
     }
     #endregion
